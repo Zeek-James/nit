@@ -1,9 +1,9 @@
+import roomsReducer from "./reducers/roomsReducer"
 import { applyMiddleware, createStore } from "redux";
 import thunk from "redux-thunk"
-import employeesReducer from "./reducers/employeesReducer"
 
 export const store = createStore(
-    employeesReducer,
+    roomsReducer,
     applyMiddleware(thunk)
 )
 

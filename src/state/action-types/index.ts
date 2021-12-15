@@ -1,4 +1,4 @@
 export enum ActionType {
-    NEWEMPLOYEE ='newEmployee',
-    GETEMPLOYEES ='getEmployees'
+    FLIPROOM ='flipRoom',
+    GETROOMS ='getRooms'
 }

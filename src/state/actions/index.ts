@@ -1,29 +1,30 @@
 import { ActionType } from "../action-types/index"
 
-interface NewEmployee {
-    type: ActionType.NEWEMPLOYEE,
+interface FlipRoom {
+    type: ActionType.FLIPROOM,
     payload: {
-        firstName: string,
-        lastName: string,
-        age: number,
-        jobDescription: string,
-        phone: number,
-        marital: string,
+        moveOutDate: string,
+        id: number,
         address: string,
-        // image?: string       
+        rooms: number,
+        location: string,
+        lastOccupant: string,
+        uId: number,
+        balance: number    
     }
 }
 
-interface GetEmployees {
-    type: ActionType.GETEMPLOYEES,
+interface GetRooms {
+    type: ActionType.GETROOMS,
     payload: {
-        firstName: string,
-        lastName: string,
-        age: number,
-        jobDescription: string,
-        phone: number,
-        marital: string,
-        address: string,
+        moveOutDate: string,
+        id: number,
+        Address: string,
+        Rooms: number,
+        location: string,
+        lastOccupant: string,
+        uId: number,
+        balance: number
     }[]
 }
-export type Action =  NewEmployee | GetEmployees;
+export type Action =  FlipRoom | GetRooms;
