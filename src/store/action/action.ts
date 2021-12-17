@@ -28,19 +28,6 @@ interface FlipRoom {
   }[];
 }
 
-// interface RProps {
-//   rooms: {
-//     moveOutDate: string;
-//     id: number;
-//     address: string;
-//     rooms: number;
-//     location: string;
-//     lastOccupant: string;
-//     uId: number;
-//     balance: number;
-//   }[];
-// }
-
 interface GetRooms {
   type: Type.GETROOMS;
   payload: {
