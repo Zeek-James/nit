@@ -1,0 +1,54 @@
+{
+  "rooms": [
+    {
+      "moveOutDate": "12th Dec 2021",
+      "id": 101,
+      "address": "26 Adesoye road",
+      "rooms": 6,
+      "location": "Lekki",
+      "lastOccupant": "John Doe",
+      "uId": 2154,
+      "balance": 326500
+    },
+    {
+      "moveOutDate": "7th Oct 2021",
+      "id": 20,
+      "address": "40 Baala road",
+      "rooms": 10,
+      "location": "Ajah",
+      "lastOccupant": "Eric Tee",
+      "uId": 0,
+      "balance": 70500
+    },
+    {
+      "moveOutDate": "14th Dec 2021",
+      "id": 110,
+      "address": "102 Omoto",
+      "rooms": 4,
+      "location": "Mushin",
+      "lastOccupant": "Donald",
+      "uId": 4150,
+      "balance": 507500
+    },
+    {
+      "moveOutDate": "8th August 2021",
+      "id": 30,
+      "address": "Sapale",
+      "rooms": 5,
+      "location": "Lagos",
+      "lastOccupant": "Tom Jude",
+      "uId": 2680,
+      "balance": 46200
+    },
+    {
+      "moveOutDate": "12 Oct 2021",
+      "id": 1013,
+      "address": "Ikoyi",
+      "rooms": 10,
+      "location": "Lagos",
+      "lastOccupant": "Din",
+      "uId": 1510,
+      "balance": 150000
+    }
+  ]
+}

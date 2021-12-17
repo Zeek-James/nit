@@ -1,68 +1,88 @@
-import { Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { flipRoom } from '../state/action-creators'
-import { RState} from '../state/reducers/roomsReducer'
-
+import {
+  Avatar,
+  Box,
+  Button,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Typography,
+} from "@mui/material";
+import { lightGreen } from "@mui/material/colors";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { flipRoom, getRooms } from "../store/action/action";
+import { RState } from "../store/reducer/roomsReducer";
 
 export const Rooms = () => {
+  const dispatch = useDispatch();
 
-    const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(getRooms());
+  }, [dispatch]);
 
-//   const rooms = useSelector(state: RState['roomDetails'] => state)
-    const rooms = useSelector((state: RState['roomDetails']) => state)
+  const handleFlip = (r: any) => {
+    dispatch(flipRoom(r));
+  };
 
-    // const handleFlip = (room) => {
+  const rooms: RState["rooms"] = useSelector((state: RState) => state.rooms);
 
-    //     // dispatch(flipRoom())
-    //     console.log(room)
-
-    // }
-
-    return (
-        <TableContainer >
-            <Table>
-                <TableHead>
-                    <TableRow>
-                        <TableCell>Move-out Date</TableCell>
-                        <TableCell>ID</TableCell>
-                        <TableCell>Address</TableCell>
-                        <TableCell>Rooms</TableCell>
-                        <TableCell>Location</TableCell>
-                        <TableCell>Last Occupant</TableCell>
-                        <TableCell>UID</TableCell>
-                        <TableCell>Balance</TableCell>
-                        <TableCell></TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {rooms.map((room) => {
-                return (
-                    <TableRow
-                        key={room.id}
-                    >
-                        <TableCell>{room.moveOutDate}</TableCell>
-                        <TableCell>{room.id}</TableCell>
-                        <TableCell>{room.address}</TableCell>
-                        <TableCell>{room.rooms}</TableCell>
-                        <TableCell>{room.location}</TableCell>
-                        <TableCell>{room.lastOccupant}</TableCell>
-                        <TableCell>{room.uId}</TableCell>
-                        <TableCell>({room.balance})</TableCell>
-                        <TableCell>
-                            <Button onClick={()=> {
-                                dispatch(flipRoom(room))
-                            }}
-                                variant='outlined'
-                                sx={{textTransform:'none'}}
-                            >Flip room</Button>
-                        </TableCell>
-                    </TableRow>
-                )
-            })
-}
-               </TableBody>
-            </Table>
-        </TableContainer>
-    )
-}
+  return (
+    <TableContainer>
+      <Table>
+        <TableHead>
+          {/* Style the Header adjust font-weight {tickyHeader} */}
+          <TableRow>
+            <TableCell>
+              <Box>Move-out Date</Box>
+            </TableCell>
+            <TableCell>ID</TableCell>
+            <TableCell>Address</TableCell>
+            <TableCell>Rooms</TableCell>
+            <TableCell>Location</TableCell>
+            <TableCell>Last Occupant</TableCell>
+            <TableCell>UID</TableCell>
+            <TableCell>Balance</TableCell>
+            <TableCell></TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {rooms.map<JSX.Element>((room) => {
+            return (
+              <TableRow key={room.id}>
+                <TableCell size="small">{room.moveOutDate}</TableCell>
+                <TableCell size="small">{room.id}</TableCell>
+                <TableCell size="small" sx={{ color: lightGreen[600] }}>
+                  <Box sx={{ display: "flex", alignItems: "center" }}>
+                    <Avatar sx={{ mr: 2 }} />
+                    <Typography>{room.address}</Typography>
+                  </Box>
+                </TableCell>
+                <TableCell size="small">{room.rooms}</TableCell>
+                <TableCell size="small">{room.location}</TableCell>
+                <TableCell size="small" sx={{ color: lightGreen[600] }}>
+                  {room.lastOccupant}
+                </TableCell>
+                <TableCell size="small">{room.uId}</TableCell>
+                <TableCell size="small">({room.balance})</TableCell>
+                <TableCell size="small">
+                  <Button
+                    onClick={() => {
+                      handleFlip(room);
+                    }}
+                    variant="outlined"
+                    sx={{ textTransform: "none" }}
+                  >
+                    Flip room
+                  </Button>
+                </TableCell>
+              </TableRow>
+            );
+          })}
+        </TableBody>
+      </Table>
+    </TableContainer>
+  );
+};
